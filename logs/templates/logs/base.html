@@ -1,0 +1,127 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-
+scale=1"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+      * {
+        font-family: "Special Elite", cursive;
+      }
+      body {
+        background: #f7971e; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #ffd200,
+          #f7971e
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #ffd200,
+          #f7971e
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        height: 100vh;
+      }
+      footer {
+        margin-right: 5px;
+      }
+      .icon {
+        height: 20px;
+        padding-bottom: 2px;
+      }
+    </style>
+    <title>Learning Log</title>
+    {% bootstrap_css %} {% bootstrap_javascript %}
+  </head>
+  <body>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="btn btn-secondary navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="navbar-toggler-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 8h16M4 16h16"
+                />
+              </svg>
+            </span>
+          </button>
+          <a class="navbar-brand" href="{% url 'logs:index' %}">Learning Log</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'logs:topics' %}">Topics</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a>Hello, {{ user.username }}.</a></li>
+            <li><a href="{% url 'users:logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'users:register' %}">Register</a></li>
+            <li><a href="{% url 'users:login' %}">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container">
+      <div class="page-header">{% block header %}{% endblock header %}</div>
+      <div>{% block content %}{% endblock content %}</div>
+    </div>
+    <!-- /container -->
+    <footer class="d-flex justify-content-end footer fixed-bottom">
+      <small class="text-muted">
+        Desenvolvido com
+        <strong class="text-danger icon">
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </strong>
+        por
+        <strong>
+          <a
+            href="https://github.com/alant2031"
+            target="_blank"
+            class="card-link"
+            >Alan Tanaka</a
+          >
+        </strong>
+      </small>
+    </footer>
+  </body>
+</html>
