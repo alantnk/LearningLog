@@ -1,4 +1,4 @@
-# TODO List with User Authentication
+# Learning Log
 
 ### Sample web application using Django 4 and bootstrap
 
