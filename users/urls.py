@@ -1,4 +1,4 @@
-"""Define padrões de URL para learning_logs."""
+"""Define padrões de URL para config."""
 
 from django.urls import path
 from django.contrib.auth.views import LoginView
